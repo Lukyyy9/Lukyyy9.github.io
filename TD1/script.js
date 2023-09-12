@@ -14,7 +14,6 @@ button.addEventListener("click", () => {
     let accuracy = position.coords.accuracy;
     let speed = position.coords.speed;
     let date = position.timestamp;
-    console.log(lat, long, alt, accuracy);
     latText.innerText = lat.toFixed(2);
     longText.innerText = long.toFixed(2);
     altText.innerText = alt.toFixed(2);
