@@ -4,7 +4,7 @@ let longText = document.getElementById("longitude");
 let altText = document.getElementById("altitude");
 let accuracyText = document.getElementById("accuracy");
 let speedText = document.getElementById("speed");
-let dateText = document.getElementById("date");
+let dateText = document.getElementById("timestamp");
 
 button.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition((position) => {
