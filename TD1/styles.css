@@ -12,6 +12,10 @@ p {
   span {
     font-weight: bold;
   }
+
+  h1{
+    margin-bottom: 200px;
+  }
   
   /* Style du bouton "Get My Location" */
   #get-location {
