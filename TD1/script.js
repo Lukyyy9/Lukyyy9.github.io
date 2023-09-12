@@ -22,10 +22,10 @@ button.addEventListener("click", () => {
     speedText.innerText = speed.toFixed(2);
     dateText.innerText = date;
     updateOrientation();
+    updateMotion();
   });
 });
 
-// Fonction pour mettre à jour l'affichage de l'orientation
 function updateOrientation(event) {
     const alpha = event.alpha.toFixed(2);
     const beta = event.beta.toFixed(2);
@@ -35,10 +35,23 @@ function updateOrientation(event) {
     document.getElementById('beta').textContent = beta;
     document.getElementById('gamma').textContent = gamma;
 }
-
-// Vérifier si l'API DeviceOrientation est prise en charge par le navigateur
 if ('DeviceOrientationEvent' in window) {
     window.addEventListener('deviceorientation', updateOrientation);
 } else {
     alert("Désolé, votre navigateur ne prend pas en charge l'API DeviceOrientation.");
+}
+
+function updateMotion(event) {
+    const x = event.acceleration.x.toFixed(2);
+    const y = event.acceleration.y.toFixed(2);
+    const z = event.acceleration.z.toFixed(2);
+
+    document.getElementById('x').textContent = x;
+    document.getElementById('y').textContent = y;
+    document.getElementById('z').textContent = z;
+}
+if ('DeviceOrientationEvent' in window) {
+    window.addEventListener('devicemotion', updateMotion);
+} else {
+    alert("Désolé, votre navigateur ne prend pas en charge l'API DeviceMotion.");
 }
