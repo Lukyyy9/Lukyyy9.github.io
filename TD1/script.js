@@ -8,11 +8,11 @@ let dateText = document.getElementById("timestamp");
 
 button.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition((position) => {
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
-    let alt = position.coords.altitude;
-    let accuracy = position.coords.accuracy;
-    let speed = position.coords.speed;
+    let lat = position.coords.latitude || 0;
+    let long = position.coords.longitude || 0;
+    let alt = position.coords.altitude || 0;
+    let accuracy = position.coords.accuracy || 0;
+    let speed = position.coords.speed || 0;
     let date = new Date(position.timestamp);
     latText.innerText = lat.toFixed(2);
     longText.innerText = long.toFixed(2);
