@@ -21,12 +21,11 @@ button.addEventListener("click", () => {
     accuracyText.innerText = accuracy.toFixed(2);
     speedText.innerText = speed.toFixed(2);
     dateText.innerText = date;
-    window.addEventListener("deviceorientation", (event) => {
-        // Récupérez l'angle d'orientation alpha (rotation autour de l'axe z)
-        let alpha = event.alpha;
-      
+    screen.orientation.addEventListener("change", function(e) {
+        let alpha = e.alpha;
         // Mettez à jour l'élément HTML avec la nouvelle valeur d'orientation
         orientationText.innerText = alpha.toFixed(2) + " degrees";
-      });
+    });
   });
 });
+
