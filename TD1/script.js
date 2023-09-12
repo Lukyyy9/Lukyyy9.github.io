@@ -1,7 +1,7 @@
 let button = document.getElementById("get-location");
 let latText = document.getElementById("latitude");
 let longText = document.getElementById("longitude");
-let altText = document.getElementById("longitude");
+let altText = document.getElementById("altitude");
 
 button.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition((position) => {
