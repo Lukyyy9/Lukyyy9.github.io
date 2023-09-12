@@ -5,6 +5,7 @@ let altText = document.getElementById("altitude");
 let accuracyText = document.getElementById("accuracy");
 let speedText = document.getElementById("speed");
 let dateText = document.getElementById("timestamp");
+let orientationText = document.getElementById("orientation");
 
 button.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition((position) => {
@@ -20,6 +21,12 @@ button.addEventListener("click", () => {
     accuracyText.innerText = accuracy.toFixed(2);
     speedText.innerText = speed.toFixed(2);
     dateText.innerText = date;
-    console.log(date, timestamp);
+    window.addEventListener("deviceorientation", (event) => {
+        // Récupérez l'angle d'orientation alpha (rotation autour de l'axe z)
+        let alpha = event.alpha;
+      
+        // Mettez à jour l'élément HTML avec la nouvelle valeur d'orientation
+        orientationText.innerText = alpha.toFixed(2) + " degrees";
+      });
   });
 });
