@@ -21,11 +21,24 @@ button.addEventListener("click", () => {
     accuracyText.innerText = accuracy.toFixed(2);
     speedText.innerText = speed.toFixed(2);
     dateText.innerText = date;
-    screen.orientation.addEventListener("change", function(e) {
-        let alpha = e.alpha;
-        // Mettez à jour l'élément HTML avec la nouvelle valeur d'orientation
-        orientationText.innerText = alpha.toFixed(2) + " degrees";
-    });
+    updateOrientation();
   });
 });
 
+// Fonction pour mettre à jour l'affichage de l'orientation
+function updateOrientation(event) {
+    const alpha = event.alpha.toFixed(2);
+    const beta = event.beta.toFixed(2);
+    const gamma = event.gamma.toFixed(2);
+
+    document.getElementById('alpha').textContent = alpha;
+    document.getElementById('beta').textContent = beta;
+    document.getElementById('gamma').textContent = gamma;
+}
+
+// Vérifier si l'API DeviceOrientation est prise en charge par le navigateur
+if ('DeviceOrientationEvent' in window) {
+    window.addEventListener('deviceorientation', updateOrientation);
+} else {
+    alert("Désolé, votre navigateur ne prend pas en charge l'API DeviceOrientation.");
+}
