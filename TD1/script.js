@@ -10,6 +10,6 @@ button.addEventListener("click", () => {
     let alt = position.coords.altitude;
     latText.innerText = lat.toFixed(2);
     longText.innerText = long.toFixed(2);
-    altText.innerText = lat.toFixed(2);
+    altText.innerText = alt.toFixed(2);
   });
 });
