@@ -33,19 +33,3 @@ button.addEventListener("click", () => {
         map.setView([lat, long], 15);
     });
 });
-
-//requete+parse
-var request = new XMLHttpRequest();
-request.open('GET', 'http://opendata.nicecotedazur.org/data/storage/f/2023-07-18T09%3A25%3A39.100Z/ev-inventaire-opendata-2023.geojson', true);
-request.onload = function () {
-    var data = JSON.parse(this.response);
-    if (request.status >= 200 && request.status < 400) {
-        data.features.forEach(wifi => {
-            var marker = L.marker([wifi.geometry.coordinates[1], wifi.geometry.coordinates[0]]).addTo(map);
-            marker.bindPopup(wifi.properties.nom);
-        });
-    } else {
-        console.log('error');
-    }
-}
-request.send();
