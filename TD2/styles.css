@@ -1,0 +1,21 @@
+#map {
+    height: 700px;
+    width: 100%;
+    border-radius: 16px;
+    position: relative;
+    /* Ajoutez cette ligne */
+}
+
+#my-location {
+    height: 30px;
+    width: 30px;
+}
+
+#button-location {
+    position: absolute;
+    /* Position absolue */
+    bottom: 10px;
+    /* Distance du bas de la div map */
+    left: 10px;
+    /* Distance de la droite de la div map */
+}
