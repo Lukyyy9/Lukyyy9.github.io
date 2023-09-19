@@ -6,6 +6,9 @@ let accuracyText = document.getElementById("accuracy");
 let speedText = document.getElementById("speed");
 let dateText = document.getElementById("timestamp");
 let orientationText = document.getElementById("orientation");
+const touchData = document.getElementById("touch-data");
+const touchXText = document.getElementById("touch-x");
+const touchYText = document.getElementById("touch-y");
 
 button.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition((position) => {
@@ -21,8 +24,9 @@ button.addEventListener("click", () => {
     accuracyText.innerText = accuracy.toFixed(2);
     speedText.innerText = speed.toFixed(2);
     dateText.innerText = date;
-    updateOrientation();
-    updateMotion();
+    //updateOrientation();
+    //updateMotion();
+    updateTouchCoordinates();
   });
 });
 
@@ -54,4 +58,15 @@ if ('DeviceOrientationEvent' in window) {
     window.addEventListener('devicemotion', updateMotion);
 } else {
     alert("Désolé, votre navigateur ne prend pas en charge l'API DeviceMotion.");
+}
+
+function updateTouchCoordinates(event) {
+    if (event.touches.length > 0) {
+        const touch = event.touches[0];
+        const touchX = touch.clientX;
+        const touchY = touch.clientY;
+
+        touchXText.textContent = touchX;
+        touchYText.textContent = touchY;
+    }
 }
