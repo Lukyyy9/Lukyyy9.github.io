@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TD3</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas height="400px" width="800px" id="cnv"></canvas>
+    <svg width="1200" height="700">
+      <rect
+        id="rect"
+        x="0"
+        y="0"
+        width="1200"
+        height="700"
+        style="
+          fill: hsl(245, 100%, 50%);
+        "
+      ></rect>
+      <rect
+        id="rect"
+        x="0"
+        y="0"
+        width="1200"
+        height="450"
+        style="
+          fill: hsl(211, 74%, 67%);
+        "
+      ></rect>
+      <circle
+        cx="1100"
+        cy="100"
+        r="80"
+        stroke="yellow"
+        stroke-width="4"
+        fill="yellow"
+      />
+      <polygon
+        points="600,530 700,530 700,400"
+        style="fill: rgb(255, 0, 0); stroke: purple; stroke-width: 1"
+      />
+      <polygon
+        points="710,530 770,530 710,400"
+        style="fill: rgb(255, 0, 0); stroke: purple; stroke-width: 1"
+      />
+      <polygon
+        points="600,538 620,560 750,560 770,538"
+        style="fill: rgb(255, 0, 0); stroke: purple; stroke-width: 1"
+      />
+    </svg>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
