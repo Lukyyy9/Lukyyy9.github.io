@@ -5,11 +5,13 @@
     <title>Three.js Example</title>
   </head>
   <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"></script>
     <script src="https://unpkg.com/three@0.126.0/examples/js/controls/OrbitControls.js"></script>
-
     <script type="module">
+      //Récupération données localisation
+      let navLat;
+      let navLong;
+
       //parse ./countries.json in a countries variable:
       let countries;
 
@@ -87,6 +89,18 @@
           });
         });
 
+      navigator.geolocation.getCurrentPosition((position) => {
+        navLat = position.coords.latitude || 0;
+        navLong = position.coords.longitude || 0;
+        console.log(navLat, navLong);
+        myPosition(navLat, navLong);
+        function myPosition(lat, long) {
+          let cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+          scene.add(cube);
+          placeOnEarth(cube, lat, long);
+        }
+      });
+
       function placeOnEarth(cube, lat, lon) {
         // Conversion en radians
         const latRad = lat * (Math.PI / 180);
@@ -105,12 +119,7 @@
 
         // Positionnez le cube sur la sphère de la Terre
         cube.position.copy(position);
-
-        console.log(position, lat, lon);
       }
-
-      // Ajoutez le cube à la scène
-      scene.add(cube);
 
       // Créez des contrôles OrbitControls pour interagir avec la scène
       const controls = new THREE.OrbitControls(camera, renderer.domElement);
