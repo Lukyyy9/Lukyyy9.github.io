@@ -2,13 +2,14 @@
 
 // Enum pour la liste des restaurants
 const Restaurants = Object.freeze({
-    RESTAURANT_1: "Chez Pierre",
-    RESTAURANT_2: "La Bonne Table",
-    RESTAURANT_3: "Pizzeria Luigi",
-    RESTAURANT_4: "Sushi World",
-    RESTAURANT_5: "Burger Palace",
-    RESTAURANT_6: "Café de Paris",
-    RESTAURANT_7: "Le Gourmet",
+    RESTAURANT_1: "Gerard's",
+    RESTAURANT_2: "Cambuse",
+    RESTAURANT_3: "Apéro Pizz",
+    RESTAURANT_4: "Spicy Bamboo",
+    RESTAURANT_5: "Docks",
+    RESTAURANT_6: "Brasserie",
+    RESTAURANT_7: "En-K",
+    RESTAURANT_8: "Atrego",
 });
 
 // Fonction pour obtenir un restaurant aléatoire
