@@ -1,34 +1,58 @@
-/* styles.css */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
 }
 
 .container {
     text-align: center;
-    background: white;
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: #333;
 }
 
-button {
+#roulette-container {
+    position: relative;
+    margin: 20px auto;
+}
+
+#roulette {
+    border: 5px solid #333;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+#spinButton {
+    background: #ff6347;
+    color: #fff;
+    border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1.2em;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s;
+}
+
+#spinButton:hover {
+    background: #ff4500;
 }
 
 #result {
     margin-top: 20px;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 1.5em;
+    color: #333;
+}
+
+#restaurantList {
+    list-style: none;
+    padding: 0;
+}
+
+#restaurantList li {
+    margin: 5px 0;
 }
