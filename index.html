@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restau'Roulette</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Restau'Roulette</h1>
-        <div id="roulette-container">
-            <canvas id="roulette" width="500" height="500"></canvas>
-        </div>
-        <button id="spinButton">Où manger ?</button>
         <div id="result"></div>
-        <h2>Liste des Restaurants</h2>
-        <ul id="restaurantList"></ul>
+        <div style="display: flex; justify-content: space-around; align-items: center">
+            <div>
+                <div id="roulette-container">
+                    <canvas id="roulette" width="500" height="500"></canvas>
+                </div>
+            </div>
+            <button id="spinButton">Où manger ?</button>
+            <div style="display: flex; flex-direction: column; justify-content: center">
+                <h2>Liste des Restaurants</h2>
+                <ul id="restaurantList" style="margin-bottom: 100px;"></ul>
+            </div>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
+
 </html>
