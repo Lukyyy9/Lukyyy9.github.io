@@ -11,10 +11,14 @@
 <body>
     <div class="container">
         <h1>Restau'Roulette</h1>
-        <div id="result"></div>
+        <div style="display: flex; align-items: center; justify-content: space-evenly;">
+            <div id="result"></div>
+            <div class="qr-code" id="qrCode"></div>
+        </div>
         <div style="display: flex; justify-content: space-around; align-items: center">
             <div>
-                <div id="roulette-container">
+                <div id="roulette-container" style="display: flex; align-items: center; flex-direction: column">
+                    <img src="img/finger.png" alt="finger" style="height: 50px;">
                     <canvas id="roulette" width="500" height="500"></canvas>
                 </div>
             </div>
@@ -26,6 +30,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="app.js"></script>
 </body>
 

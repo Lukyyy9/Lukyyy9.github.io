@@ -1,12 +1,13 @@
 // app.js
 
 let restaurantArray = [];
+let restaurantDetails = {};
 
 // Fonction pour charger le CSV et mettre à jour la liste des restaurants
 async function loadRestaurantsFromCSV() {
     const response = await fetch("https://docs.google.com/spreadsheets/d/1_uX0Fz8hASav7NyZYJV5l-PWbAudV1cXIL_uXPUPl2Y/export?exportFormat=csv");
     const data = await response.text();
-    restaurantArray = parseCSV(data);
+    parseCSV(data);
     displayRestaurantList();
     drawRouletteWheel();
 }
@@ -14,7 +15,13 @@ async function loadRestaurantsFromCSV() {
 // Fonction pour parser le CSV
 function parseCSV(data) {
     const lines = data.split("\n");
-    return lines.map(line => line.split(",")[0].trim()).filter(name => name);
+    lines.forEach(line => {
+        const [name, phone] = line.split(",");
+        if (name && phone) {
+            restaurantArray.push(name.trim());
+            restaurantDetails[name.trim()] = phone.trim();
+        }
+    });
 }
 
 // Fonction pour afficher la liste des restaurants
@@ -62,6 +69,20 @@ function drawRouletteWheel() {
 function getRandomRestaurant() {
     const randomIndex = Math.floor(Math.random() * restaurantArray.length);
     return restaurantArray[randomIndex];
+}
+
+// Fonction pour générer le QR code
+function generateQRCode(phoneNumber) {
+    const qrCodeElement = document.getElementById('qrCode');
+    qrCodeElement.innerHTML = ''; // Effacer le QR code précédent
+    new QRCode(qrCodeElement, {
+        text: `tel:${phoneNumber}`,
+        width: 180,
+        height: 180,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
 }
 
 // Fonction pour animer la roulette
@@ -120,6 +141,7 @@ function spinRoulette() {
         const index = Math.floor((360 - degrees % 360) / arcd);
         const selectedRestaurant = restaurantArray[index];
         resultDiv.textContent = `Aujourd'hui, nous mangeons à : ${selectedRestaurant}`;
+        generateQRCode(restaurantDetails[selectedRestaurant]);
     }
 
     function easeOut(t, b, c, d) {
