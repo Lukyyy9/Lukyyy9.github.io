@@ -1,17 +1,21 @@
 // app.js
 
-// Enum pour la liste des restaurants
-const Restaurants = Object.freeze({
-    RESTAURANT_1: "Chez Pierre",
-    RESTAURANT_2: "La Bonne Table",
-    RESTAURANT_3: "Pizzeria Luigi",
-    RESTAURANT_4: "Sushi World",
-    RESTAURANT_5: "Burger Palace",
-    RESTAURANT_6: "Café de Paris",
-    RESTAURANT_7: "Le Gourmet",
-});
+let restaurantArray = [];
 
-const restaurantArray = Object.values(Restaurants);
+// Fonction pour charger le CSV et mettre à jour la liste des restaurants
+async function loadRestaurantsFromCSV() {
+    const response = await fetch("https://docs.google.com/spreadsheets/d/1_uX0Fz8hASav7NyZYJV5l-PWbAudV1cXIL_uXPUPl2Y/export?exportFormat=csv");
+    const data = await response.text();
+    restaurantArray = parseCSV(data);
+    displayRestaurantList();
+    drawRouletteWheel();
+}
+
+// Fonction pour parser le CSV
+function parseCSV(data) {
+    const lines = data.split("\n");
+    return lines.map(line => line.split(",")[0].trim()).filter(name => name);
+}
 
 // Fonction pour afficher la liste des restaurants
 function displayRestaurantList() {
@@ -127,10 +131,9 @@ function spinRoulette() {
     rotateWheel();
 }
 
-// Afficher la liste des restaurants au chargement de la page
+// Charger les restaurants et dessiner la roulette au chargement de la page
 document.addEventListener('DOMContentLoaded', (event) => {
-    displayRestaurantList();
-    drawRouletteWheel();
+    loadRestaurantsFromCSV();
 });
 
 // Configuration du bouton pour lancer la roulette
