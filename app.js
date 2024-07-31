@@ -88,6 +88,7 @@ function generateQRCode(phoneNumber) {
 // Fonction pour animer la roulette
 function spinRoulette() {
     const resultDiv = document.getElementById('result');
+    const phone = document.getElementById('phone');
     const canvas = document.getElementById("roulette");
     const ctx = canvas.getContext("2d");
     const numOptions = restaurantArray.length;
@@ -157,6 +158,8 @@ function spinRoulette() {
         const index = Math.floor((360 - degrees % 360) / arcd);
         const selectedRestaurant = restaurantArray[index];
         resultDiv.textContent = `Aujourd'hui, nous mangeons à : ${selectedRestaurant}`;
+        phone.textContent = restaurantDetails[selectedRestaurant];
+        phone.href = `tel:${restaurantDetails[selectedRestaurant]}`;
         generateQRCode(restaurantDetails[selectedRestaurant]);
         showPopup(); // Afficher la popup
     }
