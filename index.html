@@ -11,11 +11,14 @@
 <body>
     <div class="container">
         <h1>Restau'Roulette</h1>
-        <div style="display: flex; align-items: center; justify-content: space-evenly;">
-            <div id="result"></div>
-            <div class="qr-code" id="qrCode"></div>
+        <div id="popup" class="popup-overlay">
+            <div class="popup-content">
+                <div id="result"></div>
+                <div class="qr-code" id="qrCode"></div>
+                <button class="popup-close" id="closePopupButton">Fermer</button>
+            </div>
         </div>
-        <div style="display: flex; justify-content: space-around; align-items: center">
+        <div id="main">
             <div>
                 <div id="roulette-container" style="display: flex; align-items: center; flex-direction: column">
                     <img src="img/finger.png" alt="finger" style="height: 50px;">

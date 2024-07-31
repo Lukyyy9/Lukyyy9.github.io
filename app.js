@@ -135,6 +135,22 @@ function spinRoulette() {
         }
     }
 
+    // Fonction pour montrer la popup
+    function showPopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+    }
+
+    // Fonction pour fermer la popup
+    function closePopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+    }
+
+    // Mettre à jour l'event listener pour le bouton "Fermer"
+    document.getElementById('closePopupButton').addEventListener('click', closePopup);
+
+    // Modifier stopRotateWheel pour afficher la popup
     function stopRotateWheel() {
         const degrees = angle * 180 / Math.PI + 90;
         const arcd = arcSize * 180 / Math.PI;
@@ -142,6 +158,7 @@ function spinRoulette() {
         const selectedRestaurant = restaurantArray[index];
         resultDiv.textContent = `Aujourd'hui, nous mangeons à : ${selectedRestaurant}`;
         generateQRCode(restaurantDetails[selectedRestaurant]);
+        showPopup(); // Afficher la popup
     }
 
     function easeOut(t, b, c, d) {
