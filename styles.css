@@ -13,6 +13,10 @@ body {
     #main {
         flex-direction: column;
     }
+    #roulette{
+        max-width: 80vw;
+        max-height: 80vw;
+    }
 }
 
 .container {
